@@ -1,6 +1,10 @@
 {
-    "project_name": "Super serious article",
+    "project_name": "Unofficial Laurentian University thesis",
     "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-','_')}}",
     "thesis_title": "Unofficial Laurentian University {\\LaTeX} template",
-    "author": "Stephen Young"
+    "given_name": "Stephen",
+    "surname": "Young",
+    "program": "Program",
+    "degree": "Degree",
+    "degree_abbreviation": "Abbr."
 }

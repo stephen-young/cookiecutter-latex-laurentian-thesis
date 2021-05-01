@@ -1,11 +1,19 @@
 \documentclass{book}
 
+\usepackage{import}
+\usepackage{titling}
+
+\newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
+\newcommand{\surname}{ {{-cookiecutter.surname-}} }
+\newcommand{\program}{ {{-cookiecutter.program-}} }
+\newcommand{\programdegree}{ {{-cookiecutter.degree-}} }
+\newcommand{\degreeAbbr}{ {{-cookiecutter.degree_abbreviation-}} }
 \title{ {{-cookiecutter.thesis_title-}} }
-\author{ {{-cookiecutter.author-}} }
+\author{\givenname \surname}
 
 \begin{document}
 
-\maketitle
+\import{./contents/}{titlepage.tex}
 
 \end{document}
 
