@@ -2,9 +2,18 @@
     "project_name": "Unofficial Laurentian University thesis",
     "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-','_')}}",
     "thesis_title": "Unofficial Laurentian University {\\LaTeX} template",
-    "given_name": "Stephen",
-    "surname": "Young",
     "program": "Program",
     "degree": "Degree",
-    "degree_abbreviation": "Abbr."
+    "degree_abbreviation": "Abbr.",
+    "given_name": "Stephen",
+    "surname": "Young",
+    "supervisor": "Supervisor",
+    "cosupervisor": "Co-Supervisor",
+    "first_committee_member": "First Committee Member",
+    "second_committee_member": "Second Committee Member",
+    "third_committee_member": "First Committee Member",
+    "external_examiner": "External Examiner",
+    "internal_examiner": "Internal Examiner",
+    "en_dean_of_graduate_studies": "Dean of Graduate Studies",
+    "fr_dean_of_graduate_studies": "Doyen des \\'Etudes Sup\\'erieures"
 }

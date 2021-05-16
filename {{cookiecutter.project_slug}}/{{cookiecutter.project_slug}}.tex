@@ -8,12 +8,15 @@
 \newcommand{\program}{ {{-cookiecutter.program-}} }
 \newcommand{\programdegree}{ {{-cookiecutter.degree-}} }
 \newcommand{\degreeAbbr}{ {{-cookiecutter.degree_abbreviation-}} }
+\newcommand{\dateofdefence}{\today}
 \title{ {{-cookiecutter.thesis_title-}} }
-\author{\givenname \surname}
+\author{\givenname\ \surname}
 
 \begin{document}
 
 \import{./contents/}{titlepage.tex}
+
+\import{./contents/}{committee.tex}
 
 \end{document}
 
