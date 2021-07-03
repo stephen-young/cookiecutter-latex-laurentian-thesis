@@ -4,6 +4,7 @@
 \usepackage{titling}
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage[intoc]{nomencl}
+\usepackage{newfloat}
 
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
@@ -20,7 +21,14 @@
 % TODO List of appendices settings
 
 % TODO optional plate environment
-% TODO Plates environment settings
+\DeclareFloatingEnvironment[
+    fileext=lop,
+    listname={List of Plates},
+    name=Plate,
+    placement=tbhp,
+    within=chapter
+]{plate}
+
 
 % TODO optional nomenclature
 \makenomenclature
