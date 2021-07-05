@@ -5,6 +5,8 @@
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage[intoc]{nomencl}
 \usepackage{newfloat}
+\usepackage{appendix}
+\usepackage{tocloft}
 
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
@@ -19,6 +21,12 @@
 % TODO List of tables settings
 % TODO List of figures settings
 % TODO List of appendices settings
+\newlistof{appendices}{apc}{\listappendixname}
+\newcommand{listappendixname}{List of Appendices}
+\newcommand{\newappendix}[1]{
+    \chapter{#1}
+    \addcontentsline{apc}{appendices}{#1}
+}
 
 % TODO optional plate environment
 \DeclareFloatingEnvironment[
