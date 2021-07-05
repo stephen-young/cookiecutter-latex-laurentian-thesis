@@ -22,11 +22,13 @@
 % TODO List of figures settings
 % TODO List of appendices settings
 \newlistof{appendices}{apc}{\listappendixname}
-\newcommand{listappendixname}{List of Appendices}
+\newcommand{\listappendixname}{List of Appendices}
+{%- raw %}
 \newcommand{\newappendix}[1]{
     \chapter{#1}
     \addcontentsline{apc}{appendices}{#1}
 }
+{%- endraw %}
 
 % TODO optional plate environment
 \DeclareFloatingEnvironment[
