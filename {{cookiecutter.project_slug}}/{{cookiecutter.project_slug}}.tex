@@ -31,7 +31,7 @@
 }
 {%- endraw %}
 
-% TODO optional plate environment
+{%- if cookiecutter.include_plates == 'y' %}
 \DeclareFloatingEnvironment[
     fileext=lop,
     listname={List of Plates},
@@ -39,7 +39,7 @@
     placement=tbhp,
     within=chapter
 ]{plate}
-
+{%- endif %}
 
 % TODO optional nomenclature
 \makenomenclature

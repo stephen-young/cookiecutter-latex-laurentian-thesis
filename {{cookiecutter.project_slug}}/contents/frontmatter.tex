@@ -46,11 +46,12 @@ Use body text or Normal style for text in this section.
 \addcontentsline{toc}{chapter}{\listfigurename{}}
 \listoffigures
 
-% TODO optional plates
+{%- if cookiecutter.include_plates == 'y' %}
 % List of Plates
 \clearpage
 \addcontentsline{toc}{chapter}{\listplatename{}}
 \listofplates
+{%- endif -%}
 
 % List of Appendices
 \clearpage

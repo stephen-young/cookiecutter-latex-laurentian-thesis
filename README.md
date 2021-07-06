@@ -44,3 +44,4 @@ You will be asked to enter these fields:
 | `internal_examiner`           | "Internal Examiner"                        | Name and title of your internal examiner                             |
 | `en_dean_of_graduate_studies` | "Dean of Graduate Studies"                 | Name and title of the Dean of Graduate Studies in English            |
 | `fr_dean_of_graduate_studies` | "Doyen des \\'Etudes Sup\\'erieures"       | Name and title of the Dean of Graduate Studies in French             |
+| `include_plates`              | "y"                                        | Includes the plates enviroment if "y", otherwise exclude             |
