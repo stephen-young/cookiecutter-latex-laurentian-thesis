@@ -8,6 +8,7 @@
 \usepackage{newfloat}
 \usepackage{appendix}
 \usepackage{tocloft}
+\usepackage{fancyhdr}
 
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
@@ -17,6 +18,13 @@
 \newcommand{\dateofdefence}{\today}
 \title{ {{-cookiecutter.thesis_title-}} }
 \author{\givenname\ \surname}
+
+\fancypagestyle{frontmatter}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
 
 % TODO Table of contents settings
 % TODO List of tables settings
