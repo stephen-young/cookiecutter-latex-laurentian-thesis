@@ -26,7 +26,15 @@
     \renewcommand{\footrulewidth}{0pt}
 }
 
+\fancypagestyle{plain}{
+    \fancyhf[R]{\thepage}
+    \fancyfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
 % TODO Table of contents settings
+\tocloftpagestyle{frontmatter}
 % TODO List of tables settings
 % TODO List of figures settings
 % TODO List of appendices settings
@@ -56,5 +64,16 @@
 
 \import{./contents/}{frontmatter.tex}
 
-\end{document}
+\chapter{Chapter titles use the \texttt{chapter} command}
 
+\section{First level subheading uses \texttt{section} command}
+
+\subsection{Second level subheading uses \texttt{subsection} command}
+
+\chapter{Chapter titles use the \texttt{chapter} command}
+
+\section{First level subheading uses \texttt{section} command}
+
+\subsection{Second level subheading uses \texttt{subsection} command}
+
+\end{document}
