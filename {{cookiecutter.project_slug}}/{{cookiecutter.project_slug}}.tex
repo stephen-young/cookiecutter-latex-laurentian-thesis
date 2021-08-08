@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[openany]{book}
 
 \usepackage{import}
 \usepackage{titling}
@@ -6,9 +6,11 @@
 \usepackage{setspace}
 \usepackage[intoc]{nomencl}
 \usepackage{newfloat}
-\usepackage{appendix}
+\usepackage[page,toc]{appendix}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{graphicx}
 
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
@@ -19,46 +21,103 @@
 \title{ {{-cookiecutter.thesis_title-}} }
 \author{\givenname\ \surname}
 
+% TODO Change chapter style
+
+% Page style settings
 \fancypagestyle{frontmatter}{
     \fancyhf{}
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
 }
-
 \fancypagestyle{plain}{
     \fancyhf[R]{\thepage}
     \fancyfoot{}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
 }
-
-% TODO Table of contents settings
 \tocloftpagestyle{frontmatter}
-% TODO List of tables settings
-% TODO List of figures settings
-% TODO List of appendices settings
-\newlistof{appendices}{apc}{\listappendixname}
-\newcommand{\listappendixname}{List of Appendices}
+
+% Table of contents settings
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\cfttoctitlefont}{\hfill\Large}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftchapfont}{\normalsize}
+\renewcommand{\cftchappagefont}{\normalsize}
+\renewcommand{\cftchappresnum}{\chaptername{}~}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftaftertoctitleskip}{1.5em}
+\setlength{\cftchapnumwidth}{2.25cm}
+\newlength{\entrysep}
+\setlength{\entrysep}{6pt}
+\setlength{\cftbeforechapskip}{\entrysep}
+\setlength{\cftbeforesecskip}{\entrysep}
+\setlength{\cftbeforesubsecskip}{\entrysep}
+
+% List of tables settings
 {%- raw %}
-\newcommand{\newappendix}[1]{
-    \chapter{#1}
-    \addcontentsline{apc}{appendices}{#1}
+\newcommand*{\loftvspace}[1]{
+    \renewcommand*{\addvspace}[1]{\vspace{#1}}
 }
 {%- endraw %}
+\renewcommand{\cftlottitlefont}{\hfill\Large}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cfttabpresnum}{Table~}
+\renewcommand{\cfttabaftersnum}{:}
+\setlength{\cftafterlottitleskip}{1.5em}
+\setlength{\cfttabnumwidth}{1.8cm}
+\setlength{\cftbeforetabskip}{\entrysep}
+\addtocontents{lot}{\protect\loftvspace{0pt}}
 
-{%- if cookiecutter.include_plates == 'y' %}
+% List of figures settings
+\renewcommand{\cftloftitlefont}{\hfill\Large}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftfigpresnum}{Figure~}
+\renewcommand{\cftfigaftersnum}{:}
+\setlength{\cftafterloftitleskip}{1.5em}
+\setlength{\cftfignumwidth}{1.8cm}
+\setlength{\cftbeforefigskip}{\entrysep}
+\addtocontents{lof}{\protect\loftvspace{0pt}}
+
+{% if cookiecutter.include_plates == 'y' -%}
+% Plates environment and list of plates settings
+\newlistof{plate}{lop}{\listplatename}
 \DeclareFloatingEnvironment[
     fileext=lop,
-    listname={List of Plates},
     name=Plate,
     placement=tbhp,
     within=chapter
 ]{plate}
-{%- endif %}
+\renewcommand{\listplatename}{List of Plates}
+\renewcommand{\cftloptitlefont}{\hfill\Large}
+\renewcommand{\cftafterloptitle}{\hfill}
+\renewcommand{\cftplatepresnum}{Plate~}
+\renewcommand{\cftplateaftersnum}{:}
+\setlength{\cftafterloptitleskip}{1.5em}
+\setlength{\cftplatenumwidth}{1.8cm}
+\setlength{\cftbeforeplateskip}{\entrysep}
+\addtocontents{lop}{\protect\loftvspace{0pt}}
+
+{% endif -%}
+% List of appendices settings
+\newlistof{appendices}{loa}{\listappendixname}
+\newcommand{\listappendixname}{List of Appendices}
+\renewcommand{\cftloatitlefont}{\hfill\Large}
+\renewcommand{\cftafterloatitle}{\hfill}
+\renewcommand{\cftappendicespresnum}{\appendixname}
+\setlength{\cftafterloatitleskip}{1.5em}
+{%- raw %}
+\newcommand{\newappendix}[1]{
+    \chapter{#1}
+    \addcontentsline{loa}{appendices}{\appendixname{} \thechapter{}: #1}
+}
+{%- endraw %}
 
 % TODO optional nomenclature
 \makenomenclature
+{% raw %}
+\graphicspath{{./figures/}}
+{%- endraw %}
 
 \begin{document}
 
@@ -68,6 +127,37 @@
 
 \section{First level subheading uses \texttt{section} command}
 
+A sample table is shown in table \ref{tab:sample-table}.
+I recommend using the \texttt{booktabs} package for better horizontal rule formatting.
+
+\import{./tables/}{tab-sample-table.tex}
+
+\subsection{Second level subheading uses \texttt{subsection} command}
+
+\chapter{Chapter titles use the \texttt{chapter} command}
+
+\section{First level subheading uses \texttt{section} command}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=5cm]{laurentian-university-coa.png}
+    \caption{Sample figure. Use the \texttt{figure} environment for figures to automatically populate in the list of figures}
+\end{figure}
+
+\subsection{Second level subheading uses \texttt{subsection} command}
+
+\chapter{Chapter titles use the \texttt{chapter} command}
+
+\section{First level subheading uses \texttt{section} command}
+
+{% if cookiecutter.include_plates == 'y' -%}
+\begin{plate}
+    \centering
+    \includegraphics[width=5cm]{laurentian-university-coa.png}
+    \caption{Sample plate. Use the \texttt{plate} environment for plates to automatically populate in the list of plates}
+\end{plate}
+
+{% endif -%}
 \subsection{Second level subheading uses \texttt{subsection} command}
 
 \chapter{Chapter titles use the \texttt{chapter} command}
@@ -75,5 +165,13 @@
 \section{First level subheading uses \texttt{section} command}
 
 \subsection{Second level subheading uses \texttt{subsection} command}
+
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname{}~}}
+\begin{appendices}
+
+    \newappendix{Sample Appendix}
+
+\end{appendices}
+
 
 \end{document}
