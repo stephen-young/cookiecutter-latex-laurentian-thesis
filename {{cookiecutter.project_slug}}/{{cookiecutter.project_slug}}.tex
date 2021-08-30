@@ -12,6 +12,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{titlesec}
+\usepackage{natbib}
 \usepackage{caption}
 
 % TODO Move settings to separate file
@@ -142,6 +143,12 @@
 {%- endraw %}
 \makenomenclature
 
+% List of references settings
+\renewcommand{\bibname}{\hfill References\hfill}
+\renewcommand{\bibfont}{\raggedright\singlespacing}
+\bibliographystyle{dcu}
+\setcitestyle{aysep={},citesep={,}}
+
 \captionsetup{justification=centering,font=bf}
 {% raw %}
 \graphicspath{{./figures/}}
@@ -219,7 +226,23 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 
 \subsection{Second level subheading uses \texttt{subsection} command}
 
-% TODO References section
+\chapter{Chapter titles use the \texttt{chapter} command}
+
+\section{First level subheading uses \texttt{section} command}
+
+Example of an in-text citation: \citet{sander2015}.
+Example of an parenthetical citation: \citep{sander2015}.
+Multiple citation (in-text): \citet{sander2015,akita1974}.
+Multiple citation (parenthetical): \citep{sander2015,akita1974}.
+Citation with repeating author: \citep{millar2016,millar2018}.
+Citation with repeating author: \citet{millar2016,millar2018}.
+
+\subsection{Second level subheading uses \texttt{subsection} command}
+
+% References section
+\clearpage
+\addcontentsline{toc}{chapter}{References}
+\bibliography{ {{-cookiecutter.project_slug-}} }
 
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname{}~}}
 \begin{appendices}
