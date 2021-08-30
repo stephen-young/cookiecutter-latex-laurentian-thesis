@@ -1,4 +1,4 @@
-\documentclass[openany]{book}
+\documentclass[openany, 12pt]{book}
 
 \usepackage{import}
 \usepackage{titling}
@@ -11,6 +11,10 @@
 \usepackage{fancyhdr}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{caption}
+
+% TODO Move settings to separate file
 
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
@@ -21,7 +25,16 @@
 \title{ {{-cookiecutter.thesis_title-}} }
 \author{\givenname\ \surname}
 
-% TODO Change chapter style
+% Paragraph settings
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}
+
+% Chapter display style
+\newcommand{\titlefont}{\bfseries\Large}
+\titleformat{\chapter}[display]{\titlefont}{\centering\chaptertitlename{} \thechapter}{0ex}{}[]
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
 % Page style settings
 \fancypagestyle{frontmatter}{
@@ -40,14 +53,14 @@
 
 % Table of contents settings
 \renewcommand{\contentsname}{Table of Contents}
-\renewcommand{\cfttoctitlefont}{\hfill\Large}
+\renewcommand{\cfttoctitlefont}{\hfill\titlefont}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftchapfont}{\normalsize}
 \renewcommand{\cftchappagefont}{\normalsize}
 \renewcommand{\cftchappresnum}{\chaptername{}~}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
 \setlength{\cftaftertoctitleskip}{1.5em}
-\setlength{\cftchapnumwidth}{2.25cm}
+\setlength{\cftchapnumwidth}{2.5cm}
 \newlength{\entrysep}
 \setlength{\entrysep}{6pt}
 \setlength{\cftbeforechapskip}{\entrysep}
@@ -60,22 +73,22 @@
     \renewcommand*{\addvspace}[1]{\vspace{#1}}
 }
 {%- endraw %}
-\renewcommand{\cftlottitlefont}{\hfill\Large}
+\renewcommand{\cftlottitlefont}{\hfill\titlefont}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\cfttabpresnum}{Table~}
 \renewcommand{\cfttabaftersnum}{:}
 \setlength{\cftafterlottitleskip}{1.5em}
-\setlength{\cfttabnumwidth}{1.8cm}
+\setlength{\cfttabnumwidth}{2.0cm}
 \setlength{\cftbeforetabskip}{\entrysep}
 \addtocontents{lot}{\protect\loftvspace{0pt}}
 
 % List of figures settings
-\renewcommand{\cftloftitlefont}{\hfill\Large}
+\renewcommand{\cftloftitlefont}{\hfill\titlefont}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\cftfigpresnum}{Figure~}
 \renewcommand{\cftfigaftersnum}{:}
 \setlength{\cftafterloftitleskip}{1.5em}
-\setlength{\cftfignumwidth}{1.8cm}
+\setlength{\cftfignumwidth}{2.2cm}
 \setlength{\cftbeforefigskip}{\entrysep}
 \addtocontents{lof}{\protect\loftvspace{0pt}}
 
@@ -89,12 +102,12 @@
     within=chapter
 ]{plate}
 \renewcommand{\listplatename}{List of Plates}
-\renewcommand{\cftloptitlefont}{\hfill\Large}
+\renewcommand{\cftloptitlefont}{\hfill\titlefont}
 \renewcommand{\cftafterloptitle}{\hfill}
 \renewcommand{\cftplatepresnum}{Plate~}
 \renewcommand{\cftplateaftersnum}{:}
 \setlength{\cftafterloptitleskip}{1.5em}
-\setlength{\cftplatenumwidth}{1.8cm}
+\setlength{\cftplatenumwidth}{2.0cm}
 \setlength{\cftbeforeplateskip}{\entrysep}
 \addtocontents{lop}{\protect\loftvspace{0pt}}
 
@@ -102,7 +115,7 @@
 % List of appendices settings
 \newlistof{appendices}{loa}{\listappendixname}
 \newcommand{\listappendixname}{List of Appendices}
-\renewcommand{\cftloatitlefont}{\hfill\Large}
+\renewcommand{\cftloatitlefont}{\hfill\titlefont}
 \renewcommand{\cftafterloatitle}{\hfill}
 \renewcommand{\cftappendicespresnum}{\appendixname}
 \setlength{\cftafterloatitleskip}{1.5em}
@@ -115,6 +128,8 @@
 
 % TODO optional nomenclature
 \makenomenclature
+
+\captionsetup{justification=centering,font=bf}
 {% raw %}
 \graphicspath{{./figures/}}
 {%- endraw %}
@@ -140,7 +155,7 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 
 \begin{figure}
     \centering
-    \includegraphics[width=5cm]{laurentian-university-coa.png}
+    \includegraphics[width=3.5cm]{laurentian-university-coa.png}
     \caption{Sample figure. Use the \texttt{figure} environment for figures to automatically populate in the list of figures}
 \end{figure}
 
@@ -153,7 +168,7 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 {% if cookiecutter.include_plates == 'y' -%}
 \begin{plate}
     \centering
-    \includegraphics[width=5cm]{laurentian-university-coa.png}
+    \includegraphics[width=3.5cm]{laurentian-university-coa.png}
     \caption{Sample plate. Use the \texttt{plate} environment for plates to automatically populate in the list of plates}
 \end{plate}
 
@@ -165,6 +180,8 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 \section{First level subheading uses \texttt{section} command}
 
 \subsection{Second level subheading uses \texttt{subsection} command}
+
+% TODO References section
 
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname{}~}}
 \begin{appendices}
