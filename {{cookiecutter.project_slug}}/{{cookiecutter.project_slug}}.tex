@@ -145,7 +145,12 @@
 A sample table is shown in table \ref{tab:sample-table}.
 I recommend using the \texttt{booktabs} package for better horizontal rule formatting.
 
-\import{./tables/}{tab-sample-table.tex}
+\begin{table}
+    \centering
+    \caption{Sample table which will automatically update in List of Tables}
+    \label{tab:sample-table}
+    \import{./tables/}{tab-sample-table.tex}
+\end{table}
 
 \subsection{Second level subheading uses \texttt{subsection} command}
 
