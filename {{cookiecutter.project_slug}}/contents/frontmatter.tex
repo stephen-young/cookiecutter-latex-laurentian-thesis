@@ -60,7 +60,10 @@ Use body text or Normal style for text in this section.
 
 % TODO optional nomenclature
 % Nomenclature (list of symbols)
+\addcontentsline{toc}{chapter}{Nomenclature}
 \printnomenclature
+% Set nomenclature page style to frontmatter, otherwise it will use the "plain" page style
+\thispagestyle{frontmatter}
 
 % TODO optional preface
 % Preface

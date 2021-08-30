@@ -4,7 +4,7 @@
 \usepackage{titling}
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{setspace}
-\usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 \usepackage{newfloat}
 \usepackage[page,toc]{appendix}
 \usepackage{tocloft}
@@ -127,6 +127,19 @@
 {%- endraw %}
 
 % TODO optional nomenclature
+% Nomenclature settings
+\renewcommand{\nomname}{\hfill Nomenclature \hfill}
+{% raw %}
+\renewcommand{\nomgroup}[1]{%
+% \ifthenelse{\equal{#1}{a}}{\item[\bfseries{Roman letters}]}{%
+% \ifthenelse{\equal{#1}{A}}{\item[\bfseries{Roman letters}]}{%
+\ifthenelse{\equal{#1}{g}}{\item[\bfseries{Greek letters}]}{%
+\ifthenelse{\equal{#1}{G}}{\item[\bfseries{Greek letters}]}{%
+\ifthenelse{\equal{#1}{x}}{\item[\bfseries{Superscripts}]}{%
+\ifthenelse{\equal{#1}{X}}{\item[\bfseries{Superscripts}]}{%
+\ifthenelse{\equal{#1}{Z}}{\item[\bfseries{Subscripts}]}{%
+\ifthenelse{\equal{#1}{z}}{\item[\bfseries{Subscripts}]}{}}}}}}}
+{%- endraw %}
 \makenomenclature
 
 \captionsetup{justification=centering,font=bf}
@@ -183,6 +196,26 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 \chapter{Chapter titles use the \texttt{chapter} command}
 
 \section{First level subheading uses \texttt{section} command}
+
+\begin{equation}
+    A_w = \frac{\pi l}{2}\left(d_1 + d_2\right)
+\end{equation}
+\nomenclature[aA]{\(A\)}{Area}
+\nomenclature[ad]{\(d\)}{Diameter}
+\nomenclature[al]{\(l\)}{Segment slanted wall length}
+\nomenclature[gp]{\(\pi\)}{Dimensionless mathematical constant}
+\nomenclature[zw]{\(w\)}{Segment wall}
+\nomenclature[z1]{\(1\)}{Segment inlet}
+\nomenclature[z2]{\(2\)}{Segment outlet}
+
+\begin{equation}
+    H^{cp} = H^\ominus \exp\left[K_H\left(\frac{1}{T}-\frac{1}{T^\ominus}\right)\right]
+\end{equation}
+\nomenclature[aH]{\(H\)}{Henry's constant}
+\nomenclature[aK]{\(K_H\)}{Henry's constant temperature coefficient}
+\nomenclature[aT]{\(T\)}{Temperature}
+\nomenclature[xo]{\(\ominus\)}{Value at standard conditions}
+\nomenclature[xc]{\(cp\)}{Defined by concentration and pressure}
 
 \subsection{Second level subheading uses \texttt{subsection} command}
 
