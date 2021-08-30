@@ -34,6 +34,12 @@
 
 % Chapter display style
 \newcommand{\titlefont}{\bfseries\Large}
+{%- raw %}
+\newcommand{\frontchap}[1]{
+    \chapter*{\hfill #1\hfill}
+    \addcontentsline{toc}{chapter}{#1}
+}
+{%- endraw %}
 \titleformat{\chapter}[display]{\titlefont}{\centering\chaptertitlename{} \thechapter}{0ex}{}[]
 \titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
@@ -244,6 +250,7 @@ Citation with repeating author: \citet{millar2016,millar2018}.
 \addcontentsline{toc}{chapter}{References}
 \bibliography{ {{-cookiecutter.project_slug-}} }
 
+% Appendices
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname{}~}}
 \begin{appendices}
 
