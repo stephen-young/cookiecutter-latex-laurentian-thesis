@@ -32,7 +32,7 @@ You will be asked to enter these fields:
 | Field                             | Default                                                  | Description                                                                         |
 | --------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `project_name`                    | "Unofficial Laurentian University thesis LaTeX template" | Name of the project.                                                                |
-| `project_slug`                    | "unofficial_laurentian_university_thesis"                | Folder name based on the project name.                                              |
+| `project_slug`                    | "unofficial-laurentian-university-thesis-latex-template" | Folder name based on the project name.                                              |
 | `thesis_title`                    | "Unofficial Laurentian thesis \\LaTeX{} template"        | Title of the thesis.                                                                |
 | `program`                         | "Program"                                                | University program the thesis is for.                                               |
 | `degree`                          | "Degree"                                                 | The degree to be attained with the thesis.                                          |
@@ -52,3 +52,7 @@ You will be asked to enter these fields:
 | `include_preface`                 | "y"                                                      | Includes the preface section in the front matter, otherwise exclude                 |
 | `include_plates`                  | "y"                                                      | Includes the plates environment if "y", otherwise exclude                           |
 | `include_nomenclature`            | "y"                                                      | Includes the nomenclature package and commands if "y", otherwise exclude            |
+
+## Example
+
+A repository generated with this template using the default settings can be found [here](https://github.com/stephen-young/unofficial-laurentian-university-thesis-latex-template).
