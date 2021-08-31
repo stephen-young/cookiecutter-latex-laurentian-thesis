@@ -40,7 +40,8 @@
 \newcommand{\titlefont}{\bfseries\Large}
 {%- raw %}
 \newcommand{\frontchap}[1]{
-    \chapter*{\hfill #1\hfill}
+    \clearpage
+    \begin{center} \titlefont #1 \end{center}
     \addcontentsline{toc}{chapter}{#1}
 }
 {%- endraw %}
