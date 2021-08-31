@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{natbib}
+\usepackage{amsmath}
 \usepackage{caption}
 
 % TODO Move settings to separate file
@@ -145,8 +146,8 @@
 \renewcommand{\nomname}{\hfill Nomenclature \hfill}
 {% raw %}
 \renewcommand{\nomgroup}[1]{%
-% \ifthenelse{\equal{#1}{a}}{\item[\bfseries{Roman letters}]}{%
-% \ifthenelse{\equal{#1}{A}}{\item[\bfseries{Roman letters}]}{%
+% \ifthenelse{\equal{#1}{a}}{\item[\bfseries{Roman letters}]}{% Uncomment these lines for an explicit "Roman letters" section for the nomenclature
+% \ifthenelse{\equal{#1}{A}}{\item[\bfseries{Roman letters}]}{% Matching closing braces will need to be added also.
 \ifthenelse{\equal{#1}{g}}{\item[\bfseries{Greek letters}]}{%
 \ifthenelse{\equal{#1}{G}}{\item[\bfseries{Greek letters}]}{%
 \ifthenelse{\equal{#1}{x}}{\item[\bfseries{Superscripts}]}{%
@@ -176,7 +177,7 @@
 \section{First level subheading uses \texttt{section} command}
 
 A sample table is shown in table \ref{tab:sample-table}.
-I recommend using the \texttt{booktabs} package for better horizontal rule formatting.
+Use the \texttt{booktabs} and \texttt{caption} packages for better table and caption formatting.
 
 \begin{table}
     \centering
@@ -204,6 +205,8 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 \section{First level subheading uses \texttt{section} command}
 
 {% if cookiecutter.include_plates == 'y' -%}
+The custom \texttt{plate} environment is added to this document. If it is not required, remove the list of plates declaration in the front matter.
+
 \begin{plate}
     \centering
     \includegraphics[width=3.5cm]{laurentian-university-coa.png}
@@ -217,9 +220,13 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 
 \section{First level subheading uses \texttt{section} command}
 
+Use the \texttt{equation} environment for numbered equations.
+Use \texttt{nomenclature} commands to add the symbols to nomenclature at their first use.
+
 \begin{equation}
     A_w = \frac{\pi l}{2}\left(d_1 + d_2\right)
 \end{equation}
+
 \nomenclature[aA]{\(A\)}{Area}
 \nomenclature[ad]{\(d\)}{Diameter}
 \nomenclature[al]{\(l\)}{Segment slanted wall length}
@@ -231,11 +238,20 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 \begin{equation}
     H^{cp} = H^\ominus \exp\left[K_H\left(\frac{1}{T}-\frac{1}{T^\ominus}\right)\right]
 \end{equation}
+
 \nomenclature[aH]{\(H\)}{Henry's constant}
 \nomenclature[aK]{\(K_H\)}{Henry's constant temperature coefficient}
 \nomenclature[aT]{\(T\)}{Temperature}
 \nomenclature[xo]{\(\ominus\)}{Value at standard conditions}
 \nomenclature[xc]{\(cp\)}{Defined by concentration and pressure}
+
+The \texttt{amsmath} package provides other useful math environments.
+For example, the \texttt{gather} environment enables the grouping of equations with each equation numbered.
+\begin{gather}
+    \dot{m}_{l,1}e_{l,1} + \dot{m}_{g,1}e_{g,1} = \dot{m}_{l,2}e_{l,2} + \dot{m}_{g,2}e_{g,2} \label{eq:energy-conservation} \\
+    e_{l,k} = \frac{P_k}{\rho_{l,k}} + \frac{U^2_{l,k}}{2} + gz_k + u_{l,k} \label{eq:liquid-energy} \\
+    e_{g,k} = \frac{P_k}{\rho_{g,k}} + \frac{\left(U_{l,k}-U_{s,k}\right)^2}{2} + gz_k + u_{g,k} \label{eq:gas-energy}
+\end{gather}
 
 \subsection{Second level subheading uses \texttt{subsection} command}
 
@@ -243,6 +259,12 @@ I recommend using the \texttt{booktabs} package for better horizontal rule forma
 
 \section{First level subheading uses \texttt{section} command}
 
+The \texttt{natbib} package is used for formatting citations and references/bibliography section.
+Collect your references with the software of your choice (e.g., Zotero) and export your references to \texttt{BibTeX} format and add them to the \texttt{.bib} file.
+Harvard style referencing has been implemented in this template.
+See the \texttt{natbib} documentation if a different style is required.
+
+In-text citations are done with the \texttt{citet} command while parenthetical citations are done with the \texttt{citep} command.
 Example of an in-text citation: \citet{sander2015}.
 Example of an parenthetical citation: \citep{sander2015}.
 Multiple citation (in-text): \citet{sander2015,akita1974}.
@@ -261,9 +283,8 @@ Citation with repeating author: \citet{millar2016,millar2018}.
 \startappendices
 \newappendix{Sample Appendix}
 
-\section{Appendix section}
-
-\subsection{Appendix subsection}
+Use the \texttt{startappendices} macro to start the appendices section.
+Add appendices with the \texttt{newappendix} macro and entries in the list of appendices and table of contents will automatically generated.
 
 \clearpage % Use \clearpage to insert page break between appendices
 \newappendix{Another Appendix}
