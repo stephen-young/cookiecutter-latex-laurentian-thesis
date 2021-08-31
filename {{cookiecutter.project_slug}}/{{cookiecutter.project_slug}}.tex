@@ -6,7 +6,6 @@
 \usepackage{setspace}
 \usepackage{nomencl}
 \usepackage{newfloat}
-\usepackage[page,toc]{appendix}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
 \usepackage{booktabs}
@@ -127,9 +126,17 @@
 \renewcommand{\cftappendicespresnum}{\appendixname}
 \setlength{\cftafterloatitleskip}{1.5em}
 {%- raw %}
+\newcommand{\startappendices}{
+    \clearpage
+    \appendix
+    \frontchap{Appendices}
+}
 \newcommand{\newappendix}[1]{
-    \chapter{#1}
-    \addcontentsline{loa}{appendices}{\appendixname{} \thechapter{}: #1}
+    \refstepcounter{appendices}
+    \refstepcounter{chapter}
+    \section*{\appendixname{} \Alph{appendices}: #1}
+    \addcontentsline{toc}{chapter}{\appendixname{} \Alph{appendices}: #1}
+    \addcontentsline{loa}{appendices}{\appendixname{} \Alph{appendices}: #1}
 }
 {%- endraw %}
 
@@ -251,12 +258,14 @@ Citation with repeating author: \citet{millar2016,millar2018}.
 \bibliography{ {{-cookiecutter.project_slug-}} }
 
 % Appendices
-\addtocontents{toc}{\protect\renewcommand{\protect\cftchappresnum}{\appendixname{}~}}
-\begin{appendices}
+\startappendices
+\newappendix{Sample Appendix}
 
-    \newappendix{Sample Appendix}
+\section{Appendix section}
 
-\end{appendices}
+\subsection{Appendix subsection}
 
+\clearpage % Use \clearpage to insert page break between appendices
+\newappendix{Another Appendix}
 
 \end{document}
