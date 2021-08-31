@@ -13,11 +13,13 @@
 % Abstract
 \input{abstract.tex}
 
+{%- if cookiecutter.include_co_authorship_statement == 'y' %}
 % TODO Optional co-authorship statement
 % Co-authorship statement
 \input{co-authorship-statement.tex}
 
-% TODO Optional acknowledgements
+{% endif -%}
+% Acknowledgements
 \input{acknowledgements.tex}
 
 % Table of contents
@@ -56,12 +58,14 @@
 \thispagestyle{frontmatter}
 
 {% endif -%}
+{%- if cookiecutter.include_preface == 'y' %}
 % TODO optional preface
 % Preface
 \clearpage
 \doublespacing
 \input{preface.tex}
 
+{% endif -%}
 \clearpage
 \pagestyle{plain}
 \pagenumbering{arabic}
