@@ -16,5 +16,6 @@
     "internal_examiner": "Internal Examiner",
     "en_dean_of_graduate_studies": "Dean of Graduate Studies",
     "fr_dean_of_graduate_studies": "Doyen des \\'Etudes Sup\\'erieures",
-    "include_plates": ["y", "n"]
+    "include_plates": ["y", "n"],
+    "include_nomenclature": ["y", "n"]
 }

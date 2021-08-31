@@ -42,20 +42,21 @@
 \clearpage
 \addcontentsline{toc}{chapter}{\listplatename{}}
 \listofplates
-{%- endif -%}
 
+{% endif -%}
 % List of Appendices
 \clearpage
 \addcontentsline{toc}{chapter}{\listappendixname{}}
 \listofappendices
 
-% TODO optional nomenclature
+{% if cookiecutter.include_nomenclature == 'y' -%}
 % Nomenclature (list of symbols)
 \printnomenclature
 \addcontentsline{toc}{chapter}{Nomenclature}
 % Set nomenclature page style to frontmatter, otherwise it will use the "plain" page style
 \thispagestyle{frontmatter}
 
+{% endif -%}
 % TODO optional preface
 % Preface
 \clearpage

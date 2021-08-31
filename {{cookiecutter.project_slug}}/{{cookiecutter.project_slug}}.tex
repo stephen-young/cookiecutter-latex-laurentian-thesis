@@ -1,10 +1,13 @@
 \documentclass[openany, 12pt]{book}
 
+% PACKAGE IMPORTS
 \usepackage{import}
 \usepackage{titling}
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{setspace}
+{% if cookiecutter.include_nomenclature == 'y' -%}
 \usepackage{nomencl}
+{% endif -%}
 \usepackage{newfloat}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
@@ -15,8 +18,9 @@
 \usepackage{amsmath}
 \usepackage{caption}
 
-% TODO Move settings to separate file
+% DOCUMENT SETTINGS AND MACROS
 
+% Thesis properties
 \newcommand{\givenname}{ {{-cookiecutter.given_name-}} }
 \newcommand{\surname}{ {{-cookiecutter.surname-}} }
 \newcommand{\program}{ {{-cookiecutter.program-}} }
@@ -141,7 +145,7 @@
 }
 {%- endraw %}
 
-% TODO optional nomenclature
+{% if cookiecutter.include_nomenclature == 'y' -%}
 % Nomenclature settings
 \renewcommand{\nomname}{\hfill Nomenclature \hfill}
 {% raw %}
@@ -157,6 +161,7 @@
 {%- endraw %}
 \makenomenclature
 
+{% endif -%}
 % List of references settings
 \renewcommand{\bibname}{\hfill References\hfill}
 \renewcommand{\bibfont}{\raggedright\singlespacing}
@@ -168,6 +173,7 @@
 \graphicspath{{./figures/}}
 {%- endraw %}
 
+% THESIS DOCUMENT
 \begin{document}
 
 \import{./contents/}{frontmatter.tex}
@@ -221,12 +227,15 @@ The custom \texttt{plate} environment is added to this document. If it is not re
 \section{First level subheading uses \texttt{section} command}
 
 Use the \texttt{equation} environment for numbered equations.
+{% if cookiecutter.include_nomenclature == 'y' -%}
 Use \texttt{nomenclature} commands to add the symbols to nomenclature at their first use.
 
+{% endif -%}
 \begin{equation}
     A_w = \frac{\pi l}{2}\left(d_1 + d_2\right)
 \end{equation}
 
+{% if cookiecutter.include_nomenclature == 'y' -%}
 \nomenclature[aA]{\(A\)}{Area}
 \nomenclature[ad]{\(d\)}{Diameter}
 \nomenclature[al]{\(l\)}{Segment slanted wall length}
@@ -235,16 +244,19 @@ Use \texttt{nomenclature} commands to add the symbols to nomenclature at their f
 \nomenclature[z1]{\(1\)}{Segment inlet}
 \nomenclature[z2]{\(2\)}{Segment outlet}
 
+{% endif -%}
 \begin{equation}
     H^{cp} = H^\ominus \exp\left[K_H\left(\frac{1}{T}-\frac{1}{T^\ominus}\right)\right]
 \end{equation}
 
+{% if cookiecutter.include_nomenclature == 'y' -%}
 \nomenclature[aH]{\(H\)}{Henry's constant}
 \nomenclature[aK]{\(K_H\)}{Henry's constant temperature coefficient}
 \nomenclature[aT]{\(T\)}{Temperature}
 \nomenclature[xo]{\(\ominus\)}{Value at standard conditions}
 \nomenclature[xc]{\(cp\)}{Defined by concentration and pressure}
 
+{% endif -%}
 The \texttt{amsmath} package provides other useful math environments.
 For example, the \texttt{gather} environment enables the grouping of equations with each equation numbered.
 \begin{gather}
