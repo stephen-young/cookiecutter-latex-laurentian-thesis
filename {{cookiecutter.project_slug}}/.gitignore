@@ -297,6 +297,3 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
-
-# Ignore final compiled pdf
-{{cookiecutter.project_slug}}.pdf
